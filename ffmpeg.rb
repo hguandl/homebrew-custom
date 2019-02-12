@@ -5,6 +5,11 @@ class Ffmpeg < Formula
   sha256 "373749824dfd334d84e55dff406729edfd1606575ee44dd485d97d45ea4d2d86"
   head "https://github.com/FFmpeg/FFmpeg.git"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    sha256 "a253f3f233b794fbe02d53fe3d0ca8292101c78a0031589ba7fcaee99ae312f7" => :mojave
+  end
+
   depends_on "nasm" => :build
   depends_on "pkg-config" => :build
   depends_on "texi2html" => :build
