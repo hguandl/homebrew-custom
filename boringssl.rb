@@ -6,6 +6,11 @@ class Boringssl < Formula
   version "20190208"
   head "https://boringssl.googlesource.com/boringssl", :using => :git
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    sha256 "e77763c8164200f697fd30be4524a48312446c6ece2817c195c595739d7ceed3" => :mojave
+  end
+
   keg_only :provided_by_macos,
     "Apple has its own TLS and crypto libraries"
 
