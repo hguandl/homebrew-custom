@@ -7,6 +7,11 @@ class Nginx < Formula
   sha256 "a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787"
   head "https://hg.nginx.org/nginx/", :using => :hg
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    sha256 "7fd661ded230b712c8b7751183f5513c0c5b44571520742a48683d3f8fcc859b" => :mojave
+  end
+
   depends_on "hguandl/custom/boringssl"
   depends_on "jemalloc"
   depends_on "pcre"
