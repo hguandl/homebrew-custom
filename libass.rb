@@ -24,7 +24,7 @@ class Libass < Formula
     system "autoreconf", "-i" if build.head?
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--enable-fongconfig"
+                          "--enable-fongconfig",
                           "--disable-coretext"
     system "make", "install"
   end
