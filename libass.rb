@@ -5,6 +5,12 @@ class Libass < Formula
   sha256 "881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2"
   revision 1
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "b4fd18a8a6e681cfa7410f81517e5f08b3db55ff502572949b3ec9d3dd4d4cfd" => :mojave
+  end
+
   head do
     url "https://github.com/libass/libass.git"
 
@@ -24,7 +30,7 @@ class Libass < Formula
     system "autoreconf", "-i" if build.head?
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--enable-fongconfig",
+                          "--enable-fontconfig",
                           "--disable-coretext"
     system "make", "install"
   end
