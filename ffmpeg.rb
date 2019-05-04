@@ -8,8 +8,8 @@ class Ffmpeg < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    rebuild 1
-    sha256 "804b232b092e540028f1b49b4f8208bb5b999ac6a5fa14a60dd79e001758112e" => :mojave
+    rebuild 2
+    sha256 "f5e9762b3ca3dd22fb1b21134661fc9493a1dd16e51643540ee8ab5db190a5f3" => :mojave
   end
 
   depends_on "nasm" => :build
