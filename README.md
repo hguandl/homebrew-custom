@@ -20,13 +20,17 @@ brew install hguandl/custom/<formula>
 
 A fork of OpenSSL that is designed to meet Google's needs. Built from [Google BoringSSL](https://boringssl.googlesource.com/boringssl/).
 
+### - libass
+
+Use Fontconfig instead of CoreText to avoid issues on fontname matching. See <https://zrstea.com/261/>.
+
 ### - nginx
 
 Patched to support SDPY, HPACK and strict-SNI. See [kn007/patch](https://github.com/kn007/patch). Use BoringSSL as SSL library. Add custom optimizations including [brotli](https://github.com/google/brotli) and jemalloc.
 
 ### - ffmpeg
 
-Prune some unused dependencies.
+Prune some unused dependencies. Use [libass built with Fontconfig](#--libass).
 
 ## Troubleshooting
 
