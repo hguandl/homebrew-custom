@@ -60,7 +60,6 @@ class Ffmpeg < Formula
       --enable-librubberband
       --enable-libsnappy
       --enable-libtheora
-      --enable-libtls
       --enable-libvorbis
       --enable-libvpx
       --enable-libx264
