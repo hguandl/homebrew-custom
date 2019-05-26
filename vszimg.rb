@@ -31,7 +31,7 @@ class Vszimg < Formula
   end
 
   def post_install
-    (HOMEBREW_PREFIX/"lib/vapoursynth").install_symlink prefix/"lib/vszimg.so" => "vszimg.dylib"
+    (HOMEBREW_PREFIX/"lib/vapoursynth").install_symlink prefix/"lib/zimg/vszimg.so" => "vszimg.dylib"
   end
 
   def caveats; <<~EOS

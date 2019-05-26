@@ -30,6 +30,6 @@ class Fmtconv < Formula
   end
 
   def post_install
-    (HOMEBREW_PREFIX/"lib/vapoursynth").install_symlink prefix/"lib/libfmtconv.so" => "libfmtconv.dylib"
+    (HOMEBREW_PREFIX/"lib/vapoursynth").install_symlink prefix/"lib/libfmtconv.dylib" => "libfmtconv.dylib"
   end
 end
