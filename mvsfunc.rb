@@ -9,6 +9,9 @@ class Mvsfunc < Formula
     url "https://github.com/HomeOfVapourSynthEvolution/mvsfunc.git"
   end
 
+  depends_on "hguandl/custom/fmtconv"
+  depends_on "hguandl/custom/vapoursynth-addgrain"
+  depends_on "hguandl/custom/vslsmashsource"
   depends_on "python"
   depends_on "vapoursynth"
 
