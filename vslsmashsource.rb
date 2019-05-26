@@ -16,6 +16,7 @@ class Vslsmashsource < Formula
   end
 
   depends_on "pkg-config" => :build
+  depends_on "l-smash"
   depends_on "vapoursynth"
 
   def install
