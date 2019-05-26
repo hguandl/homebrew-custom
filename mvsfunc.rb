@@ -12,9 +12,8 @@ class Mvsfunc < Formula
   depends_on "python"
   depends_on "vapoursynth"
 
-  python = Formula["python"] 
-
   def install
+    python = Formula["python"] 
     xy = python.version.to_s.slice(/(3\.\d)/) || "3.7"
     libpath = prefix/"lib/python#{xy}/site-packages"
     libpath.mkpath
