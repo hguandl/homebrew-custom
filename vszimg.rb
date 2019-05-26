@@ -4,6 +4,12 @@ class Vszimg < Formula
   url "https://github.com/sekrit-twc/zimg/archive/release-2.0.1a.tar.gz"
   sha256 "b424eab91e0874b9289d8ca5238c7896c839a72256c0e6b949ae214a28291343"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "e7451608049ba15716d352d0988e1d3b4e2e9fa6c33102a1a42e2be5ffc05c53" => :mojave
+  end
+
   head do
     url "https://github.com/sekrit-twc/zimg.git"
   end

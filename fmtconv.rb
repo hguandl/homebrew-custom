@@ -5,6 +5,12 @@ class Fmtconv < Formula
   version "r20"
   sha256 "44f2f2be05a0265136ee1bb51bd08e5a47c6c1e856d0d045cde5a6bbd7b4350c"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "4c99db478c691c854735cb40e5c4db41f7f459a5a7fdc5d3c93825a3aa5c691c" => :mojave
+  end
+
   head do
     url "https://github.com/EleonoreMizo/fmtconv.git"
   end

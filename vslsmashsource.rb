@@ -5,6 +5,12 @@ class Vslsmashsource < Formula
   version "20171028"
   sha256 "67a4781c9701f3ff1ad5a22744305e846d32e0e0174da10e38e8791e9f06a621"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "67aa6e637f3f82afc68efe3b2e4c5dcfa8d4f88485a9c77e86d04b4116b45b7f" => :mojave
+  end
+
   head do
     url "https://github.com/VFR-maniac/L-SMASH-Works.git"
   end

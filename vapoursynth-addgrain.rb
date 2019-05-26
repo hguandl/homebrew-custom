@@ -5,6 +5,12 @@ class VapoursynthAddgrain < Formula
   version "r7"
   sha256 "3adeb77f59b6da43663f906523eb19e47a16a8a9b9607ad97442f09ab12680b9"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "04521e008507fe6f05ea534c5faf2afc6d0090867c9865488e6389f3238b12b5" => :mojave
+  end
+
   head do
     url "https://github.com/HomeOfVapourSynthEvolution/VapourSynth-AddGrain.git"
   end
