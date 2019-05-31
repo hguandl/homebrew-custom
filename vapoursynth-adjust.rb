@@ -1,4 +1,4 @@
-class VapourSynthAdjust < Formula
+class VapoursynthAdjust < Formula
   desc "A very basic port of the built-in Avisynth filter Tweak"
   homepage "https://github.com/dubhater/vapoursynth-adjust"
   url "https://github.com/dubhater/vapoursynth-adjust/archive/v1.tar.gz"
