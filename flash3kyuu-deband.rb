@@ -6,6 +6,12 @@ class Flash3kyuuDeband < Formula
   revision 1
   sha256 "5f68d017b45f8aecfeee3ac5343964c71eb8cbc209711aa5ad4dc9408f90f411"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "fc768fefc93b4c4954843be942dadbcee160200069993d964df10dd553239c7c" => :mojave
+  end
+
   head do
     url "https://github.com/SAPikachu/flash3kyuu_deband.git"
   end

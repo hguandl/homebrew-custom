@@ -5,6 +5,12 @@ class VapoursynthSangnom < Formula
   version "20160831"
   sha256 "b78ba8edd6a7d856c0606de822111095e64b1f4d8cbbc311a5c52cca62d6137b"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "85bba1e74834ea760711a56876c86caafc768a81a544c52c8dd96926dbe5b4d6" => :mojave
+  end
+
   head do
     url "https://bitbucket.org/James1201/vapoursynth-sangnom", :using => :hg
   end
