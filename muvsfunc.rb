@@ -19,9 +19,9 @@ class Muvsfunc < Formula
     libpath = prefix/"lib/python#{xy}/site-packages"
     libpath.mkpath
     mv("muvsfunc.py", libpath/"muvsfunc.py")
-    mv("LUM.py", libpath/"LUM.py")
-    mv("muvsfunc_misc.py", libpath/"muvsfunc_misc.py")
-    mv("muvsfunc_numpy.py", libpath/"muvsfunc_numpy.py")
-    mv("SuperRes.py", libpath/"SuperRes.py")
+    mv("Collections/LUM.py", libpath/"LUM.py")
+    mv("Collections/muvsfunc_misc.py", libpath/"muvsfunc_misc.py")
+    mv("Collections/muvsfunc_numpy.py", libpath/"muvsfunc_numpy.py")
+    mv("Collections/SuperRes.py", libpath/"SuperRes.py")
   end
 end
