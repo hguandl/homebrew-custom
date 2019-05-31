@@ -5,6 +5,12 @@ class VapoursynthNnedi3cl < Formula
   version "r7.3"
   sha256 "01a162c036bd7f723c94160a820461fbde34cd3810194c273979cb0453b2d66b"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any
+    sha256 "a603b4632a2cee3b843a5a7b957a75b2465096bc33893013dccd2fb9709c1767" => :mojave
+  end
+
   head do
     url "https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL.git"
   end
