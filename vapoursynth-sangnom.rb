@@ -22,6 +22,6 @@ class VapoursynthSangnom < Formula
   end
 
   def post_install
-    (HOMEBREW_PREFIX/"lib/vapoursynth").install_symlink prefix/"lib/libsangnom.dylib => "libsangnom.dylib"
+    (HOMEBREW_PREFIX/"lib/vapoursynth").install_symlink prefix/"lib/libsangnom.dylib" => "libsangnom.dylib"
   end
 end
