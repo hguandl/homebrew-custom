@@ -4,6 +4,11 @@ class VapoursynthNnedi3 < Formula
   url "https://github.com/dubhater/vapoursynth-nnedi3/archive/v12.tar.gz"
   sha256 "235f43ef4aac04ef2f42a8c44c2c16b077754a3e403992df4b87c8c4b9e13aa5"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    sha256 "0a6de90fa2e1afc3d3b875d0864573145e7a5627757bd330d9b6841a3d1a782c" => :mojave
+  end
+
   head do
     url "https://github.com/HomeOfVapourSynthEvolution/vapoursynth-nnedi3.git"
   end
