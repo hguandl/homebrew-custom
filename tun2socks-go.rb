@@ -1,24 +1,17 @@
 class Tun2socksGo < Formula
   desc "A tun2socks implementation written in Go"
   homepage "https://github.com/eycorsican/go-tun2socks"
-  url "https://github.com/eycorsican/go-tun2socks/archive/v1.16.1.tar.gz"
-  sha256 "4a7178f75ea813e8ac49161ae6d8e004b848c4d1eccc44a432a908c1898ae138"
-  head "https://github.com/eycorsican/go-tun2socks.git"
-
-  bottle do
-    root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any_skip_relocation
-    sha256 "9f8209f89a43fb983cb6d9f3485618ec6d901bd0268f285de6c583a8d0abb331" => :mojave
-  end
+  url "https://github.com/hguandl/go-tun2socks/archive/v1.16.2.tar.gz"
+  sha256 "d87ceb2b6957bb714e2d70eb01321e11acadb7ce9eda10ba28477ac329029afb"
+  head "https://github.com/hguandl/go-tun2socks.git"
 
   depends_on "go" => :build
 
   def install
     ENV["GOPATH"] = HOMEBREW_CACHE/"go_cache"
 
-    inreplace "Makefile".gsub! "$(shell git describe --tags)", "v#{version}"
-
-    system "go", "get", "-d", "./..."
+    # Version info independent from git
+    inreplace "Makefile", "$(shell git describe --tags)", "v#{version}"
 
     system "make"
 
