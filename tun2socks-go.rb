@@ -10,9 +10,7 @@ class Tun2socksGo < Formula
   def install
     ENV["GOPATH"] = HOMEBREW_CACHE/"go_cache"
 
-    inreplace "Makefile" do |s|
-      s.gsub! "$(shell git describe --tags)", "v#{version}"
-    end
+    inreplace "Makefile".gsub! "$(shell git describe --tags)", "v#{version}"
 
     system "go", "get", "-d", "./..."
 
