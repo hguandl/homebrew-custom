@@ -11,7 +11,7 @@ class Tun2socksGo < Formula
     ENV["GOPATH"] = HOMEBREW_CACHE/"go_cache"
 
     inreplace "Makefile" do |s|
-      s.gsub! "$(shell git describe --tags)", "v"version
+      s.gsub! "$(shell git describe --tags)", "v#{version}"
     end
 
     system "go", "get", "-d", "./..."
