@@ -32,7 +32,7 @@ class Tun2socksGo < Formula
   end
 
   test do
-    output = shell_output("#{bin}/tun2socks --help 2>&1", 1)
-    assert_match "Usage of tun2socks:", output
+    output = shell_output("#{bin}/tun2socks -version 2>&1", 0)
+    assert_match "v#{version}", output
   end
 end
