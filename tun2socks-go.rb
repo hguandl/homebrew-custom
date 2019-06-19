@@ -23,4 +23,16 @@ class Tun2socksGo < Formula
 
     bin.install "build/tun2socks"
   end
+
+  def caveats; <<~EOS
+    tun2socks requires root privileges so you will need to run
+    `sudo tun2socks`.
+    You should be certain that you trust any software you grant root privileges.
+  EOS
+  end
+
+  test do
+    output = shell_output("#{bin}/tun2socks --help 2>&1", 1)
+    assert_match "Usage of tun2socks:", output
+  end
 end
