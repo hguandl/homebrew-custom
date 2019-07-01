@@ -3,7 +3,7 @@ class Ffmpeg < Formula
   homepage "https://ffmpeg.org/"
   url "https://ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz"
   sha256 "0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d"
-  revision 2
+  revision 3
   head "https://github.com/FFmpeg/FFmpeg.git"
 
   bottle do
@@ -21,7 +21,7 @@ class Ffmpeg < Formula
   depends_on "freetype"
   depends_on "frei0r"
   depends_on "lame"
-  depends_on "libass"
+  depends_on "hguandl/custom/libass"
   depends_on "libsoxr"
   depends_on "libvorbis"
   depends_on "libvpx"
