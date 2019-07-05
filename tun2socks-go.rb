@@ -2,14 +2,9 @@ class Tun2socksGo < Formula
   desc "A tun2socks implementation written in Go"
   homepage "https://github.com/eycorsican/go-tun2socks"
   url "https://github.com/hguandl/go-tun2socks/archive/v1.16.2.tar.gz"
-  sha256 "d87ceb2b6957bb714e2d70eb01321e11acadb7ce9eda10ba28477ac329029afb"
+  sha256 "648658875ee81ba6a1197b1c7c5e16ef2422e10537665fa918b4fbe57ee08f31"
+  revision 1
   head "https://github.com/hguandl/go-tun2socks.git"
-
-  bottle do
-    root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any_skip_relocation
-    sha256 "386b096bf2659b96a54dd2fb38d6c3f0ec74fa5b06953ab05951b2ac53ac2d25" => :mojave
-  end
 
   depends_on "go" => :build
 
