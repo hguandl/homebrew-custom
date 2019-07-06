@@ -8,6 +8,12 @@ class Tun2socksGo < Formula
 
   depends_on "go" => :build
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    cellar :any_skip_relocation
+    sha256 "8985627ae9e879b69d03cfd5f00cdfa37bc9fe781295fa7a122c2a70d1ea24d6" => :mojave
+  end
+
   def install
     ENV["GOPATH"] = HOMEBREW_CACHE/"go_cache"
 
