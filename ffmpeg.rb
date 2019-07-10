@@ -3,6 +3,7 @@ class Ffmpeg < Formula
   homepage "https://ffmpeg.org/"
   url "https://ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz"
   sha256 "f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1"
+  revision 1
   head "https://github.com/FFmpeg/FFmpeg.git"
 
   depends_on "nasm" => :build
@@ -13,14 +14,18 @@ class Ffmpeg < Formula
   depends_on "fontconfig"
   depends_on "freetype"
   depends_on "frei0r"
-  depends_on "lame"
   depends_on "hguandl/custom/libass"
+  depends_on "lame"
+  depends_on "libbluray"
   depends_on "libsoxr"
   depends_on "libvorbis"
   depends_on "libvpx"
+  depends_on "opencore-amr"
+  depends_on "openjpeg"
   depends_on "opus"
   depends_on "rtmpdump"
   depends_on "rubberband"
+  depends_on "sdl2"
   depends_on "snappy"
   depends_on "speex"
   depends_on "theora"
@@ -35,11 +40,11 @@ class Ffmpeg < Formula
       --enable-shared
       --enable-pthreads
       --enable-version3
-      --enable-hardcoded-tables
       --enable-avresample
       --cc=#{ENV.cc}
       --host-cflags=#{ENV.cflags}
       --host-ldflags=#{ENV.ldflags}
+      --enable-ffplay
       --enable-gpl
       --enable-nonfree
       --enable-frei0r
@@ -48,6 +53,9 @@ class Ffmpeg < Formula
       --enable-libmp3lame
       --enable-libfontconfig
       --enable-libfreetype
+      --enable-libopencore-amrnb
+      --enable-libopencore-amrwb
+      --enable-libopenjpeg
       --enable-libopus
       --enable-librtmp
       --enable-librubberband
@@ -60,6 +68,9 @@ class Ffmpeg < Formula
       --enable-libxvid
       --enable-libspeex
       --enable-libsoxr
+      --enable-lzma
+      --disable-libjack
+      --disable-indev=jack
     ]
 
     system "./configure", *args
