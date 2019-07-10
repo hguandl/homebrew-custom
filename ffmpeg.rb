@@ -6,6 +6,11 @@ class Ffmpeg < Formula
   revision 1
   head "https://github.com/FFmpeg/FFmpeg.git"
 
+  bottle do
+    root_url "https://files.hguandl.com/bottles-custom"
+    sha256 "0a22a72d5b2739b947e5b460457299a5b2d70ee60a9d3073b0eddc8b268207ee" => :mojave
+  end
+
   depends_on "nasm" => :build
   depends_on "pkg-config" => :build
   depends_on "texi2html" => :build
