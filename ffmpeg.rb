@@ -1,15 +1,9 @@
 class Ffmpeg < Formula
   desc "Play, record, convert, and stream audio and video"
   homepage "https://ffmpeg.org/"
-  url "https://ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz"
-  sha256 "0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d"
-  revision 3
+  url "https://ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz"
+  sha256 "f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1"
   head "https://github.com/FFmpeg/FFmpeg.git"
-
-  bottle do
-    root_url "https://files.hguandl.com/bottles-custom"
-    sha256 "97ac5ad4ce5b11e9411575523f12066914c3446ff51e48f7c5fb7dcec17368de" => :mojave
-  end
 
   depends_on "nasm" => :build
   depends_on "pkg-config" => :build
