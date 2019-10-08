@@ -8,7 +8,7 @@ class Libass < Formula
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
     cellar :any
-    rebuild 1
+    sha256 "3e8aba5fe2d712fdf8adb1010d88453712158675fe15c46c6974264b91c149da" => :catalina
     sha256 "c48952c93d75b1e2b5bb8a8edf990d5a6b587de1d036d396366b6fce607db15e" => :mojave
   end
 
