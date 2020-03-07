@@ -1,0 +1,48 @@
+language: shell
+
+os: osx
+osx_image: xcode11.3
+env: BINTRAY_VERSION=latest
+
+install:
+  - brew update
+  - brew tap nagakiran/deps
+  - brew tap osrf/simulation
+  - brew tap hguandl/custom
+
+script:
+  - travis_wait 120 brew install hguandl/custom/ros --build-bottle
+
+before_cache:
+  - brew cleanup
+
+cache:
+  directories:
+  - "/usr/local/Homebrew"
+  - "$HOME/Library/Caches/pip"
+  - "$HOME/Library/Caches/Homebrew"
+
+before_deploy:
+  - git config user.name ${GITHUB_USERNAME}
+  - git config user.email ${GITHUB_EMAIL}
+  - echo "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" >> ~/.netrc
+  - brew bottle --json --merge --write ros.rb --root-url ${BOTTLE_ROOT_URL}
+  - export BOTTLE_FILENAME=$(ls ros*bottle*.tar.gz)
+  - PKG_NAME=$(ls ros*bottle*.tar.gz | cut -f 1 -d "-")
+  - BUILD_VER=$(ls ros*bottle*.tar.gz | cut -f 3 -d "-")
+  - export UPLOAD_FILENAME="${PKG_NAME}-${BUILD_VER}"
+
+deploy:
+  - provider: script
+    cleanup: false
+    script: curl -u${BINTRAY_USERNAME}:${BINTRAY_KEY} -T ${BOTTLE_FILENAME} "https://api.bintray.com/content/${BINTRAY_USERNAME}/${BINTRAY_REPO}/${BINTRAY_VERSION}/${BINTRAY_PATH}/${UPLOAD_FILENAME}?publish=1"
+    on:
+      branch: master
+    edge: true
+
+  - provider: script
+    cleanup: false
+    script: git push
+    on:
+      branch: master
+    edge: true
