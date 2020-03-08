@@ -2,8 +2,8 @@
 
 export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
-if [[ "${TRAVIS_COMMIT_MESSAGE}" == *": add"*"bottle." ]]; then
-  echo "Bottle added, skip building."
+if [[ "${TRAVIS_COMMIT_MESSAGE}" == *":"*"bottle." ]]; then
+  echo "This commit is for uploading a bottle, skip building."
   exit 0
 fi
 
