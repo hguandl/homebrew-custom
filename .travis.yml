@@ -10,7 +10,7 @@ install:
   - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
 script:
-  - travis_wait 120 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
+  - travis_wait 120 ./build-bottle.sh
 
 before_cache:
   - brew cleanup
@@ -40,7 +40,10 @@ deploy:
 
   - provider: script
     cleanup: false
-    script: ./deploy-push.sh
+    script: ./deploy-tap.sh
     on:
       branch: master
     edge: true
+
+after_deploy:
+  - brew update
