@@ -26,18 +26,16 @@ jobs:
       script: ./deploy-tap.sh ${TARGET_FORMULA}
 
 stages:
-  - name: precondition
-  - name: before_install
+  - Precondition
+  - name: Preparation
     if: env(DO_BUILD) = 1
-  - name: install
+  - name: Setup
     if: env(DO_BUILD) = 1
-  - name: script
+  - name: Build
     if: env(DO_BUILD) = 1
-  - name: before_deploy
+  - name: Package
     if: env(DO_BUILD) = 1
-  - name: deploy
-    if: env(DO_BUILD) = 1
-  - name: after_deploy
+  - name: Deploy
     if: (env(DO_BUILD) = 1) AND (branch = master)
 
 before_cache:
