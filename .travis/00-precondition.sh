@@ -1,10 +1,6 @@
 #!/bin/bash
 
-if [ -e .DO_BUILD ]; then
-  rm -rf .DO_BUILD
-fi
-
-TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
+export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
 if [[ "${TRAVIS_COMMIT_MESSAGE}" == *": add"*"bottle." ]]; then
   echo "Bottle added, skip building."
@@ -22,4 +18,4 @@ if [ ! ${TARGET_FORMULA} ]; then
 fi
 
 echo "Would build ${TARGET_FORMULA}."
-touch .DO_BUILD
+export DO_BUILD=1
