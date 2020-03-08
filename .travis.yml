@@ -40,6 +40,7 @@ deploy:
     script: ./deploy-tap.sh ${TARGET_FORMULA}
     on:
       branch: master
+      condition: $DO_DEPLOYMENT = 1
     edge: true
 
 after_deploy:

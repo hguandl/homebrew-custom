@@ -13,3 +13,4 @@ if [ ! ${TARGET_FORMULA} ]; then
 fi
 
 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
+export DO_DEPLOYMENT=1
