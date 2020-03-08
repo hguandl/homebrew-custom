@@ -5,6 +5,9 @@ class Gtest < Formula
   sha256 "9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c"
   head "https://github.com/google/googletest.git"
 
+  keg_only "isolate environment",
+  "it may conflict with other libraries"
+
   depends_on "cmake" => :build
   depends_on "ninja" => :build
 
