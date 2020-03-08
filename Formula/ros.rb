@@ -1,8 +1,9 @@
 class Ros < Formula
   desc "Libraries and tools to create robot applications"
   homepage "https://www.ros.org"
-  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-3/requirements-snapshot-20200308-3.txt"
+  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-3/ros-snapshot-20200308-3.tar.xz"
   sha256 "a0bd5fa26255a7cee6ff69312f3cd80b462069da4e380bc9166b129ded84947b"
+  revision 1
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
   bottle do

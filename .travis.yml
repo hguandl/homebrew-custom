@@ -15,7 +15,6 @@ install:
   - brew update
   - brew upgrade
   - brew tap hguandl/custom
-  - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
 script:
   - travis_wait 120 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
