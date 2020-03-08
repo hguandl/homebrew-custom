@@ -14,6 +14,8 @@ script:
   - travis_wait 120 ./build-bottle.sh
 
 before_cache:
+  - git config --global user.name ${GITHUB_USERNAME}
+  - git config --global user.email ${GITHUB_EMAIL}
   - brew cleanup
 
 cache:
@@ -23,10 +25,8 @@ cache:
   - "$HOME/Library/Caches/Homebrew"
 
 before_deploy:
-  - git config user.name ${GITHUB_USERNAME}
-  - git config user.email ${GITHUB_EMAIL}
   - echo "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" >> ~/.netrc
-  - echo "machine github.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
+  - echo "machine api.bintray.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
   - brew update
   - brew bottle --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL} || brew bottle --skip-relocation --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL}
   - brew bottle --merge --write $(ls ${TARGET_FORMULA}*bottle*.json)
@@ -35,14 +35,7 @@ before_deploy:
 deploy:
   - provider: script
     cleanup: false
-    script: python3 upload.py ${TARGET_FORMULA}
-    on:
-      branch: master
-    edge: true
-
-  - provider: script
-    cleanup: false
-    script: ./deploy-tap.sh
+    script: ./deploy-tap.sh ${TARGET_FORMULA}
     on:
       branch: master
     edge: true
