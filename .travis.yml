@@ -15,13 +15,13 @@ jobs:
     - stage: "Setup"
       name: "Setup workspace"
       script: .travis/02-setup.sh
-    - stage "Build"
+    - stage: "Build"
       name: "Build formula"
       script: .travis/03-build.sh
-    - stage "Package"
+    - stage: "Package"
       name: "Package formula"
       script: .travis/04-package.sh
-    - stage "Deploy"
+    - stage: "Deploy"
       name: "Deploy to tap"
       script: ./deploy-tap.sh ${TARGET_FORMULA}
 
