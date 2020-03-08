@@ -2,7 +2,6 @@ language: shell
 
 os: osx
 osx_image: xcode11.3
-env: BINTRAY_VERSION=latest
 
 jobs:
   include:
