@@ -4,6 +4,12 @@ class Gsh < Formula
   url "https://github.com/hguandl/gsh/releases/download/1.0.2/gsh-1.0.2.tar.gz"
   sha256 "2a10cc3c0322bbcc7e690333ed546e7a78961f276a5ae0ef33681b925ec37b55"
 
+  bottle do
+    root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
+    cellar :any_skip_relocation
+    sha256 "dad0d12fd9c7be109094f3862190d613a6ce717c14a0da259995576e95a41a1b" => :mojave
+  end
+
   head do
     url "https://github.com/hguandl/gsh.git"
 
