@@ -4,7 +4,8 @@ os: osx
 osx_image: xcode11.3
 
 before_install:
-  - source ./precondition.sh || travis_terminate 0
+  - source ./precondition.sh
+  - if [ ! ${DO_BULID} ]; then; travis_terminate 0; fi
   - git config --global user.name ${GITHUB_USERNAME}
   - git config --global user.email ${GITHUB_EMAIL}
   - echo -e "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" > ~/.netrc
@@ -17,7 +18,7 @@ install:
   - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
 script:
-  - travis_wait 120 ./build-bottle.sh
+  - travis_wait 120 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
 
 before_cache:
   - brew cleanup
