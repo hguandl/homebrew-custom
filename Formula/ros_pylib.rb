@@ -5,6 +5,12 @@ class RosPylib < Formula
   sha256 "3ffa69238687cbc7d2d456da5b7978a666580c14c211b0039ef6f04b6fad6920"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
+  bottle do
+    root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
+    cellar :any_skip_relocation
+    sha256 "f2f685a1f8203e8d556c99cea69182ba060eafd9921fc899276a46976e22c2a8" => :mojave
+  end
+
   depends_on "python"
 
   def install
