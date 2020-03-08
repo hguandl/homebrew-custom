@@ -1,9 +1,8 @@
 class Ros < Formula
   desc "Libraries and tools to create robot applications"
   homepage "https://www.ros.org"
-  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-3/ros-snapshot-20200308-3.tar.xz"
-  sha256 "a0bd5fa26255a7cee6ff69312f3cd80b462069da4e380bc9166b129ded84947b"
-  revision 1
+  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-4/ros-snapshot-20200308-4.tar.xz"
+  sha256 "b013f7159ef798c2b30b4278dd971cd8024e2745a8dc2af047c4d8df6f238949"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
   bottle do
@@ -22,6 +21,7 @@ class Ros < Formula
   depends_on "boost-python3"
   depends_on "fltk"
   depends_on "gpgme"
+  depends_on "hguandl/custom/gtest"
   depends_on "hguandl/custom/ros_pylib"
   depends_on "lz4"
   depends_on "nagakiran/deps/tango-icon-theme"
@@ -32,22 +32,23 @@ class Ros < Formula
   depends_on "pcl"
   depends_on "poco"
   depends_on "py3cairo"
+  depends_on "pyqt"
   depends_on "qt"
   depends_on "sbcl"
   depends_on "yaml-cpp"
 
   def install
     python = Formula["python"]
-    pyver = Language::Python.major_minor_version "python3"
+    pyver = Language::Python.major_minor_version python.bin/"python3"
     pylib = Formula["ros_pylib"]
 
-    qt = Formula["qt"]
-    boost = Formula["boost"]
+    gtest = Formula["hguandl/custom/gtest"]
     opencv = Formula["opencv@3"]
     openssl = Formula["openssl@1.1"]
+    qt = Formula["qt"]
     ENV["ROS_PYTHON_VERSION"] = pyver.to_s
     ENV["PYTHONPATH"] = pylib.opt_libexec/"python#{pyver}"
-    ENV["CMAKE_PREFIX_PATH"] = "#{qt.opt_prefix}:#{opencv.opt_prefix}:#{openssl.opt_prefix}"
+    ENV["CMAKE_PREFIX_PATH"] = "#{gtest.opt_prefix}:#{opencv.opt_prefix}:#{openssl.opt_prefix}:#{qt.opt_prefix}"
 
     installargs = %W[
       --directory #{buildpath}
@@ -70,13 +71,13 @@ class Ros < Formula
 
   def caveats
     <<~EOS
-      Installation successful, please source the ROS workspace:
+      To activate the environment, please source the ROS workspace:
 
         source #{opt_prefix}/#{rosdistro}/setup.#{Utils::Shell.preferred}
     EOS
   end
 
-  def rosdistro;
+  def rosdistro
     "melodic"
   end
 
