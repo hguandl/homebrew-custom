@@ -7,35 +7,40 @@ jobs:
   include:
     - stage: "Precondition"
       name: "Check for updated formulae"
-      script: source .travis/00-precondition.sh
-    - stage: "Preparation"
-      name: "Prepare for building"
-      script: .travis/01-preparation.sh
-    - stage: "Setup"
-      name: "Setup workspace"
-      script: .travis/02-setup.sh
+      script: ./precondition.sh
     - stage: "Build"
-      name: "Build formula"
-      script: .travis/03-build.sh
-    - stage: "Package"
-      name: "Package formula"
-      script: .travis/04-package.sh
-    - stage: "Deploy"
-      name: "Deploy to tap"
-      script: ./deploy-tap.sh ${TARGET_FORMULA}
+      name: "Build and deploy for the formulae"
+      before_install:
+        - git config --global user.name ${GITHUB_USERNAME}
+        - git config --global user.email ${GITHUB_EMAIL}
+        - echo -e "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" > ~/.netrc
+        - echo -e "machine api.bintray.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
+      install:
+        - brew update
+        - brew upgrade
+        - brew tap hguandl/custom
+        - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
+      script:
+        - travis_wait 120 ./build-bottle.sh
+      before_deploy:
+        - brew update
+        - brew bottle --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL} || brew bottle --skip-relocation --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL}
+        - brew bottle --merge --write $(ls ${TARGET_FORMULA}*bottle*.json)
+        - pip3 install requests
+      deploy:
+        - provider: script
+          cleanup: false
+          script: ./deploy-tap.sh ${TARGET_FORMULA}
+          on:
+            branch: master
+          edge: true
+      after_deploy:
+        - brew update
 
 stages:
   - Precondition
-  - name: Preparation
-    if: env(DO_BUILD) = 1
-  - name: Setup
-    if: env(DO_BUILD) = 1
-  - name: Build
-    if: env(DO_BUILD) = 1
-  - name: Package
-    if: env(DO_BUILD) = 1
-  - name: Deploy
-    if: (env(DO_BUILD) = 1) AND (branch = master)
+  - Build
+    if: branch = master
 
 before_cache:
   - brew update
