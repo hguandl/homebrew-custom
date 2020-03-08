@@ -4,7 +4,7 @@ os: osx
 osx_image: xcode11.3
 
 before_install:
-  - source ./precondition.sh
+  - source ./precondition.sh || travis_terminate 0
   - git config --global user.name ${GITHUB_USERNAME}
   - git config --global user.email ${GITHUB_EMAIL}
   - echo -e "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" > ~/.netrc
