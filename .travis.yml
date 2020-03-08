@@ -2,23 +2,38 @@ language: shell
 
 os: osx
 osx_image: xcode11.3
+env: HOMEBREW_TAP=hguandl/custom
+if: branch = ci
 
 before_install:
   - source ./precondition.sh
-  - if [ -z ${DO_BUILD} ]; then travis_terminate 0; fi
+  - if [ -z ${DO_BUILD} ]; then travis_terminate 1; fi
   - git config --global user.name ${GITHUB_USERNAME}
   - git config --global user.email ${GITHUB_EMAIL}
   - echo -e "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" > ~/.netrc
   - echo -e "machine api.bintray.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
 
 install:
+  - brew untap ${HOMEBREW_TAP} || true
   - brew update
-  - brew tap hguandl/custom
+  - brew tap ${HOMEBREW_TAP}
+  - pushd $(brew --repository ${HOMEBREW_TAP})
+  - git fetch origin ci
+  - git merge origin/ci --ff-only
+  - popd
+  - brew tap ${HOMEBREW_TAP}
 
 script:
-  - travis_wait 120 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
+  - travis_wait 120 brew install ${HOMEBREW_TAP}/${TARGET_FORMULA} --build-bottle
 
 before_cache:
+  - pushd $(brew --repository)
+  - git stash clear
+  - popd
+  - pushd $(brew --repository homebrew/core)
+  - git stash clear
+  - popd
+  - brew update
   - brew cleanup
 
 cache:
@@ -28,8 +43,7 @@ cache:
   - "$HOME/Library/Caches/Homebrew"
 
 before_deploy:
-  - brew update
-  - brew bottle --json hguandl/custom/${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL} || brew bottle --skip-relocation --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL}
+  - brew bottle --json ${HOMEBREW_TAP}/${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL} || brew bottle --skip-relocation --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL}
   - brew bottle --merge --write $(ls ${TARGET_FORMULA}*bottle*.json)
   - pip3 install requests
 
@@ -38,8 +52,5 @@ deploy:
     cleanup: false
     script: ./deploy-tap.sh ${TARGET_FORMULA}
     on:
-      branch: master
+      branch: ci
     edge: true
-
-after_deploy:
-  - brew update

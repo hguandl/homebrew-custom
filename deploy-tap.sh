@@ -2,6 +2,6 @@
 
 python3 upload.py $1
 
-pushd $(brew --prefix)/Homebrew/Library/Taps/hguandl/homebrew-custom
+pushd $(brew --repository ${HOMEBREW_TAP})
 git push
 popd
