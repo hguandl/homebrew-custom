@@ -27,7 +27,7 @@ before_deploy:
   - echo "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" >> ~/.netrc
   - echo "machine github.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
   - brew update
-  - brew bottle --json ros --root-url ${BOTTLE_ROOT_URL}
+  - brew bottle --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL}
   - brew bottle --merge --write $(ls ${TARGET_FORMULA}*bottle*.json)
   - pip3 install requests
 
