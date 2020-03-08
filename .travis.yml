@@ -6,6 +6,7 @@ env: BINTRAY_VERSION=latest
 
 install:
   - brew update
+  - brew upgrade
   - brew tap hguandl/custom
   - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
