@@ -4,6 +4,12 @@ os: osx
 osx_image: xcode11.3
 env: BINTRAY_VERSION=latest
 
+before_install:
+  - git config --global user.name ${GITHUB_USERNAME}
+  - git config --global user.email ${GITHUB_EMAIL}
+  - echo -e "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" > ~/.netrc
+  - echo -e "machine api.bintray.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
+
 install:
   - brew update
   - brew upgrade
@@ -14,8 +20,6 @@ script:
   - travis_wait 120 ./build-bottle.sh
 
 before_cache:
-  - git config --global user.name ${GITHUB_USERNAME}
-  - git config --global user.email ${GITHUB_EMAIL}
   - brew cleanup
 
 cache:
@@ -25,8 +29,6 @@ cache:
   - "$HOME/Library/Caches/Homebrew"
 
 before_deploy:
-  - echo "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" >> ~/.netrc
-  - echo "machine api.bintray.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
   - brew update
   - brew bottle --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL} || brew bottle --skip-relocation --json ${TARGET_FORMULA} --root-url ${BOTTLE_ROOT_URL}
   - brew bottle --merge --write $(ls ${TARGET_FORMULA}*bottle*.json)
