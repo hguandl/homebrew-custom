@@ -6,12 +6,11 @@ env: BINTRAY_VERSION=latest
 
 install:
   - brew update
-  - brew tap nagakiran/deps
-  - brew tap osrf/simulation
   - brew tap hguandl/custom
+  - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
 script:
-  - travis_wait 120 brew install hguandl/custom/ros --build-bottle
+  - travis_wait 120 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
 
 before_cache:
   - brew cleanup
@@ -26,23 +25,22 @@ before_deploy:
   - git config user.name ${GITHUB_USERNAME}
   - git config user.email ${GITHUB_EMAIL}
   - echo "machine github.com\n  login ${GITHUB_USERNAME}\n  password ${GITHUB_TOKEN}" >> ~/.netrc
-  - brew bottle --json --merge --write ros.rb --root-url ${BOTTLE_ROOT_URL}
-  - export BOTTLE_FILENAME=$(ls ros*bottle*.tar.gz)
-  - PKG_NAME=$(ls ros*bottle*.tar.gz | cut -f 1 -d "-")
-  - BUILD_VER=$(ls ros*bottle*.tar.gz | cut -f 3 -d "-")
-  - export UPLOAD_FILENAME="${PKG_NAME}-${BUILD_VER}"
+  - echo "machine github.com\n  login ${BINTRAY_USERNAME}\n  password ${BINTRAY_KEY}" >> ~/.netrc
+  - brew bottle --json ros --root-url ${BOTTLE_ROOT_URL}
+  - brew bottle --merge --write $(ls ${TARGET_FORMULA}*bottle*.json)
+  - pip3 install requests
 
 deploy:
   - provider: script
     cleanup: false
-    script: curl -u${BINTRAY_USERNAME}:${BINTRAY_KEY} -T ${BOTTLE_FILENAME} "https://api.bintray.com/content/${BINTRAY_USERNAME}/${BINTRAY_REPO}/${BINTRAY_VERSION}/${BINTRAY_PATH}/${UPLOAD_FILENAME}?publish=1"
+    script: python3 upload.py ${TARGET_FORMULA}
     on:
       branch: master
     edge: true
 
   - provider: script
     cleanup: false
-    script: git push
+    script: ./deploy-push.sh
     on:
       branch: master
     edge: true

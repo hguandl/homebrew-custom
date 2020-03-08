@@ -1,5 +1,5 @@
 #!/bin/bash
 
-git add ros.rb
-git commit -m "Update ROS"
+pushd $(brew --prefix)/Homebrew/Library/Taps/hguandl/homebrew-custom
 git push
+popd

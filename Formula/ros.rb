@@ -5,11 +5,6 @@ class Ros < Formula
   sha256 "2226365257bc4543092c8268cbfb995b3c9dbdc55c90846e3cd7d6d5ee23b13d"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
-  bottle do
-    root_url "https://api.bintray.com/content/hguandl/homebrew-custom/bottles/"
-    sha256 "c1d166289a7de4311d71cf9f99a72758b4aeafb1cf081c1823b4046f26d93bf1" => :catalina
-  end
-
   keg_only "isolated",
   "it needs isolated environment"
 
@@ -21,13 +16,13 @@ class Ros < Formula
   depends_on "boost-python3"
   depends_on "fltk"
   depends_on "gpgme"
-  depends_on "ros_pylib"
+  depends_on "hguandl/custom/ros_pylib"
   depends_on "lz4"
-  depends_on "tango-icon-theme"
+  depends_on "nagakiran/deps/tango-icon-theme"
   depends_on "opencv@3"
   depends_on "openssl@1.1"
   depends_on "orocos-kdl"
-  depends_on "gazebo9"
+  depends_on "osrf/simulation/gazebo9"
   depends_on "pcl"
   depends_on "poco"
   depends_on "py3cairo"
