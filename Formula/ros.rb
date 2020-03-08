@@ -5,6 +5,12 @@ class Ros < Formula
   sha256 "2226365257bc4543092c8268cbfb995b3c9dbdc55c90846e3cd7d6d5ee23b13d"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
+  bottle do
+    root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
+    rebuild 1
+    sha256 "c1d166289a7de4311d71cf9f99a72758b4aeafb1cf081c1823b4046f26d93bf1" => :catalina
+  end
+
   keg_only "isolated",
   "it needs isolated environment"
 
