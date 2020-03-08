@@ -1,8 +1,8 @@
 class RosPylib < Formula
   desc "Python libraries for ROS"
   homepage "https://github.com/hguandl/ros-src-snapshot"
-  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308/ros-snapshot-20200308-1_pylib.tar.xz"
-  sha256 "30db46932ede1d21926db9a7f38f1a643bd34377f121ddcdc8417ff4ec41fc0b"
+  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-1/ros-snapshot-20200308-1_pylib.tar.xz"
+  sha256 "99982fe2e97223d195bb430b6c819d52183919e27a0c5e40757b54c47195677f"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
   depends_on "python"
