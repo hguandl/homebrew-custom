@@ -1,8 +1,8 @@
 class RosPylib < Formula
   desc "Python libraries for ROS"
   homepage "https://github.com/hguandl/ros-src-snapshot"
-  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-3/requirements-snapshot-20200308-3.txt"
-  sha256 "3ffa69238687cbc7d2d456da5b7978a666580c14c211b0039ef6f04b6fad6920"
+  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-4/requirements-snapshot-20200308-4.txt"
+  sha256 "b92b1474464e602a9e7e3c2c55427d64a542199471db2e289922159cba2cdbd7"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
   bottle do
