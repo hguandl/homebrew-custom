@@ -39,7 +39,7 @@ jobs:
 
 stages:
   - Precondition
-  - Build
+  - name: Build
     if: branch = master
 
 before_cache:
