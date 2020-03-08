@@ -4,6 +4,26 @@ os: osx
 osx_image: xcode11.3
 env: BINTRAY_VERSION=latest
 
+stages:
+  - precondition
+  - name: before_install
+    if: env(DO_BUILD) = 1
+  - name: install
+    if: env(DO_BUILD) = 1
+  - name: script
+    if: env(DO_BUILD) = 1
+  - name: before_deploy
+    if: env(DO_BUILD) = 1
+  - name: deploy
+    if: env(DO_BUILD) = 1
+  - name: after_deploy
+    if: env(DO_BUILD) = 1
+
+precondition:
+  - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
+  - ./precondition.sh
+  - if [ -e .DO_BUILD ]; then; export DO_BUILD=1; fi
+
 before_install:
   - git config --global user.name ${GITHUB_USERNAME}
   - git config --global user.email ${GITHUB_EMAIL}
@@ -14,10 +34,9 @@ install:
   - brew update
   - brew upgrade
   - brew tap hguandl/custom
-  - export TARGET_FORMULA=$(echo ${TRAVIS_COMMIT_MESSAGE} | cut -f 1 -d ":")
 
 script:
-  - travis_wait 120 ./build-bottle.sh
+  - travis_wait 120 brew install hguandl/custom/${TARGET_FORMULA} --build-bottle
 
 before_cache:
   - brew cleanup
