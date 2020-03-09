@@ -16,7 +16,7 @@ class RosPylib < Formula
 
   def install
     python = Formula["python"]
-    pyver = Language::Python.major_minor_version "python3"
+    pyver = Language::Python.major_minor_version python.bin/"python3"
     pypth = (opt_libexec/"python#{pyver}\n").to_s
 
     args = %W[

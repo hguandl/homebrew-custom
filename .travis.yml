@@ -39,6 +39,7 @@ before_cache:
 cache:
   directories:
   - "/usr/local/Homebrew"
+  - "$HOME/.rvm"
   - "$HOME/Library/Caches/pip"
   - "$HOME/Library/Caches/Homebrew"
 
