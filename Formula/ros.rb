@@ -1,8 +1,8 @@
 class Ros < Formula
   desc "Libraries and tools to create robot applications"
   homepage "https://www.ros.org"
-  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-4/ros-snapshot-20200308-4.tar.xz"
-  sha256 "b013f7159ef798c2b30b4278dd971cd8024e2745a8dc2af047c4d8df6f238949"
+  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200322/ros-snapshot-20200322.tar.xz"
+  sha256 "ece307afd3734fceff0572286f44a4c6ab41362bbb8bc6d501fba28997587f26"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
   bottle do
@@ -71,10 +71,12 @@ class Ros < Formula
   end
 
   def caveats
+    python = Formula["python"]
     <<~EOS
-      To activate the environment, please source the ROS workspace:
+      To activate the environment, please source the ROS workspace and add Python 3 to PATH:
 
         source #{opt_prefix}/#{rosdistro}/setup.#{Utils::Shell.preferred}
+        export #{python.opt_libexec}/bin:$PATH
     EOS
   end
 

@@ -44,6 +44,7 @@ jobs:
       run: |
         brew untap ${HOMEBREW_TAP} || true
         brew update
+        brew cask install xquartz || true
         brew tap ${HOMEBREW_TAP}
         pushd $(brew --repository ${HOMEBREW_TAP})
         git fetch origin ci
