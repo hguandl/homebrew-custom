@@ -1,7 +1,7 @@
 class RosPylib < Formula
   desc "Python libraries for ROS"
   homepage "https://github.com/hguandl/ros-src-snapshot"
-  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200308-4/requirements-snapshot-20200308-4.txt"
+  url "https://github.com/hguandl/ros-src-snapshot/releases/download/snapshot-20200322/requirements-snapshot-20200322.txt"
   sha256 "b92b1474464e602a9e7e3c2c55427d64a542199471db2e289922159cba2cdbd7"
   head "https://github.com/hguandl/ros-src-snapshot.git"
 
@@ -18,6 +18,9 @@ class RosPylib < Formula
     python = Formula["python"]
     pyver = Language::Python.major_minor_version python.bin/"python3"
     pypth = (opt_libexec/"python#{pyver}\n").to_s
+
+
+    (buildpath/"target/setup.cfg").write "[install]\nprefix="
 
     args = %W[
       -r

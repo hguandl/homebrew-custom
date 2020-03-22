@@ -3,7 +3,7 @@ language: shell
 os: osx
 osx_image: xcode11.3
 env: HOMEBREW_TAP=hguandl/custom
-if: branch = ci
+if: branch = travis-ci
 
 before_install:
   - source ./precondition.sh
@@ -53,5 +53,5 @@ deploy:
     cleanup: false
     script: ./deploy-tap.sh ${TARGET_FORMULA}
     on:
-      branch: ci
+      branch: travis-ci
     edge: true
