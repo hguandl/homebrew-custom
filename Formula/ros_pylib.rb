@@ -8,8 +8,7 @@ class RosPylib < Formula
   bottle do
     root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
     cellar :any_skip_relocation
-    rebuild 1
-    sha256 "4ee1350d39378af4fdf09f2aa1d7054e242981c52e7224b3bbf04d9cc4adec09" => :mojave
+    sha256 "a1cff9bcaa8e1b4eff351c34db221f8509db0fd1322c2e0f1fbab5624f5d3d81" => :catalina
   end
 
   depends_on "python"
