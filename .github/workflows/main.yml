@@ -24,6 +24,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: actions/cache@v1
+      id: cache
+      with:
+        path: |
+          /usr/local/Homebrew/**/.git
+          ~/Library/Caches/pip
+          ~/Library/Caches/Homebrew
+
     - name: Prepare
       run: |
         source ./precondition.sh
@@ -63,3 +71,8 @@ jobs:
 
     - name: Upload
       run: ./deploy-tap.sh ${TARGET_FORMULA}
+
+    - name: Cleanup
+      run: |
+        brew untap ${HOMEBREW_TAP}
+        brew cleanup
