@@ -1,8 +1,8 @@
 class Clangd < Formula
   desc "Language server that can work with many editors"
   homepage "https://clangd.llvm.org"
-  url "https://github.com/clangd/clangd/releases/download/10rc3/clangd-mac-10rc3.zip"
-  sha256 "7d8137f8c19d1464ce9a292942fa11672a7abacd5e7218159ae8eae22c2f784e"
+  url "https://github.com/clangd/clangd/releases/download/10.0.0/clangd-mac-10.0.0.zip"
+  sha256 "c3012b90898257ac2402ee9f406810006920c6b9fcee1179fe345f3e9414566b"
 
   bottle :unneeded
 
