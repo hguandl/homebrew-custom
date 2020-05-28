@@ -24,14 +24,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v1
-      id: cache
-      with:
-        path: |
-          /usr/local/Homebrew/**/.git
-          ~/Library/Caches/pip
-          ~/Library/Caches/Homebrew
-
     - name: Prepare
       run: |
         source ./precondition.sh
@@ -55,7 +47,7 @@ jobs:
         brew cask install xquartz || true
         brew tap ${HOMEBREW_TAP}
         pushd $(brew --repository ${HOMEBREW_TAP})
-        git fetch origin ci
+        git branch --remotes
         git merge origin/ci --ff-only
         popd
         brew tap ${HOMEBREW_TAP}
