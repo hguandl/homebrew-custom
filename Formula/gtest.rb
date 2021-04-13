@@ -7,8 +7,7 @@ class Gtest < Formula
 
   bottle do
     root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
-    cellar :any_skip_relocation
-    sha256 "d47c1dc5bd320e92945d60d97b0a800b691a4b677b56b99fc8314c03ca83caf6" => :mojave
+    sha256 mojave: "d47c1dc5bd320e92945d60d97b0a800b691a4b677b56b99fc8314c03ca83caf6"
   end
 
   keg_only "isolate environment",

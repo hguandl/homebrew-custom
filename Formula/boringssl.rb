@@ -8,7 +8,7 @@ class Boringssl < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    sha256 "e77763c8164200f697fd30be4524a48312446c6ece2817c195c595739d7ceed3" => :mojave
+    sha256 mojave: "e77763c8164200f697fd30be4524a48312446c6ece2817c195c595739d7ceed3"
   end
 
   keg_only :provided_by_macos,

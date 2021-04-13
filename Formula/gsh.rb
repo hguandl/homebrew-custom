@@ -6,8 +6,7 @@ class Gsh < Formula
 
   bottle do
     root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
-    cellar :any_skip_relocation
-    sha256 "dad0d12fd9c7be109094f3862190d613a6ce717c14a0da259995576e95a41a1b" => :mojave
+    sha256 mojave: "dad0d12fd9c7be109094f3862190d613a6ce717c14a0da259995576e95a41a1b"
   end
 
   head do

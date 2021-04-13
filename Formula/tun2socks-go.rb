@@ -10,8 +10,7 @@ class Tun2socksGo < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any_skip_relocation
-    sha256 "8985627ae9e879b69d03cfd5f00cdfa37bc9fe781295fa7a122c2a70d1ea24d6" => :mojave
+    sha256 mojave: "8985627ae9e879b69d03cfd5f00cdfa37bc9fe781295fa7a122c2a70d1ea24d6"
   end
 
   def install

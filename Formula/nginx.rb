@@ -9,7 +9,7 @@ class Nginx < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    sha256 "7fd661ded230b712c8b7751183f5513c0c5b44571520742a48683d3f8fcc859b" => :mojave
+    sha256 mojave: "7fd661ded230b712c8b7751183f5513c0c5b44571520742a48683d3f8fcc859b"
   end
 
   depends_on "hguandl/custom/boringssl"
