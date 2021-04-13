@@ -7,8 +7,7 @@ class Fmtconv < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any
-    sha256 "4c99db478c691c854735cb40e5c4db41f7f459a5a7fdc5d3c93825a3aa5c691c" => :mojave
+    sha256 mojave: "4c99db478c691c854735cb40e5c4db41f7f459a5a7fdc5d3c93825a3aa5c691c"
   end
 
   head do

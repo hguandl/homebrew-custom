@@ -7,8 +7,7 @@ class Vslsmashsource < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any
-    sha256 "67aa6e637f3f82afc68efe3b2e4c5dcfa8d4f88485a9c77e86d04b4116b45b7f" => :mojave
+    sha256 mojave: "67aa6e637f3f82afc68efe3b2e4c5dcfa8d4f88485a9c77e86d04b4116b45b7f"
   end
 
   head do

@@ -7,8 +7,7 @@ class VapoursynthSangnom < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any
-    sha256 "85bba1e74834ea760711a56876c86caafc768a81a544c52c8dd96926dbe5b4d6" => :mojave
+    sha256 mojave: "85bba1e74834ea760711a56876c86caafc768a81a544c52c8dd96926dbe5b4d6"
   end
 
   head do

@@ -8,8 +8,7 @@ class Flash3kyuuDeband < Formula
 
   bottle do
     root_url "https://files.hguandl.com/bottles-custom"
-    cellar :any
-    sha256 "fc768fefc93b4c4954843be942dadbcee160200069993d964df10dd553239c7c" => :mojave
+    sha256 mojave: "fc768fefc93b4c4954843be942dadbcee160200069993d964df10dd553239c7c"
   end
 
   head do

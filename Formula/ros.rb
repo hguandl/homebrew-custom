@@ -7,7 +7,7 @@ class Ros < Formula
 
   bottle do
     root_url "https://dl.bintray.com/hguandl/homebrew-custom/bottles"
-    sha256 "85c07620ee780822f3641aad7be508086e58cc95e95f9da5a96901d5b8af0c25" => :catalina
+    sha256 catalina: "85c07620ee780822f3641aad7be508086e58cc95e95f9da5a96901d5b8af0c25"
   end
 
   keg_only "isolated",
